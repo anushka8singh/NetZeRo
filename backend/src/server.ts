@@ -1,14 +1,18 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import dotenv from "dotenv";
+import { connectDB } from "./config/db";
 
 dotenv.config();
 
 const app = express();
+
+// Connect DB
+connectDB();
+
 app.use(express.json());
 
-// Basic route
-app.get("/", (req: Request, res: Response) => {
-  res.send("NetZero Backend Running with TypeScript 🚀");
+app.get("/", (req, res) => {
+  res.send("NetZero Backend Running 🚀");
 });
 
 app.listen(5000, () => {
